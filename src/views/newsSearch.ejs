@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newS</title>
+    <font size = "2">
+        <a href="/logout" class="news__text">Log out &emsp; |</a>
+        <a href="/changePW" class="news__text">Change password &emsp; |</a>
+        <a href="/deleteAC" class="news__text">Delete account &emsp; |</a>
+        <a href="/home/archive" class="news__text">Archive &emsp; |</a>
+    </font>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <a href="/home" class="news__log" style="font-size: 3rem"> newS </a>
+        <%- include('./partials/search.ejs') %>
+    </header>
+
+    <div class="wrapper">
+        <div class="news">  
+            <% if(articles != null) { %>
+            <% articles.forEach(function(article, index) { %>
+            <div class="news__card">
+                <form action="/home/Single" method="POST" id="form">    
+                    <a  href="javascript:{}" onclick="this.closest('form').submit();return false;"  class="news__text">
+                    
+                            
+                            <input type="hidden" name="image" value="<%- article.urlToImage %>">
+                            <input type="hidden" name="publish" value="<%- article.publishedAt %>">
+                            <input type="hidden" name="title" value="<%- article.title %>">
+                            <input type="hidden" name="source" value="<%- article.source.name %>">
+                            <input type="hidden" name="author" value="<%- article.author %>">
+                            <input type="hidden" name="description" value="<%- article.description %>">
+                            <input type="hidden" name="url" value="<%- article.url %>">
+                         
+                    
+                        <img src="<%- article.urlToImage %>" alt="<%- article.title %>">
+                        <h2><%- article.title %></h2>
+                        <p><%- article.description %></p>
+                    </a>
+                </form>
+            </div>
+            <% }) %>
+            <% } else { %>
+                No posts found.
+            <% } %>
+        </div>
+    </div>  
+</body>
+</html> 

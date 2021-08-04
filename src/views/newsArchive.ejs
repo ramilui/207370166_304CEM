@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newS</title>
+    <font size = "2">
+        <a href="/logout" class="news__text">Log out &emsp; |</a>
+        <a href="/changePW" class="news__text">Change password &emsp; |</a>
+        <a href="/deleteAC" class="news__text">Delete account &emsp; |</a>
+        <a href="/home/archive" class="news__text">Archive &emsp; |</a>
+    </font>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="/home" class="news__log" style="font-size: 3rem"> newS </a>
+        <%- include('./partials/search.ejs') %>
+    </header>
+
+    <div class="wrapper">
+        <div class="news">
+            <div class="news__card">
+              <h1>Hi! <%- nickname %></h1>
+              <h1>You can type your words here</h1>
+                <form action="/home/yourWords" method="POST" id="form">
+                    <p><input  type="text" name="words" class="form__input" autofocus placeholder="Type sometings.." required></p>
+                    <p><a  href="javascript:{}" onclick="this.closest('form').submit();return false;" class="news__text">
+                    Submit</a></p>
+                </form>
+           </div>
+            <% result.forEach(function(result, index) { %>
+                <div class="news__card">
+                    <a href="<%- result.url %>" class="news__text">
+                    <h1><%- result.title %></h1>
+                    </a>
+                    <!--update the comment-->
+                    <form action="/home/updateComment" method="POST" id="form">
+                        <p><input class="comment__placeholder" type="text" name="newComment" class="form__input" autofocus placeholder="<%- result.comment %>" required></p>
+                        <input type="hidden" name="title" value="<%- result.title %>">
+                        <p><a  href="javascript:{}" onclick="this.closest('form').submit();return false;" class="news__text">
+                        Update the comment</a></p>
+                    </form>
+                    <!--delete the news-->
+                    <form action="/home/deletePost" method="POST" id="form">
+                        <input type="hidden" name="title" value="<%- result.title %>">
+                        <a  href="javascript:{}" onclick="this.closest('form').submit();return false;" class="news__text">
+                        Delete the post</a>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+ 
+</body>
+</html>

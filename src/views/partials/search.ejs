@@ -1,0 +1,28 @@
+
+
+<div class="header__search">
+    <form action="/home" method="POST"style="text-align:center;">
+
+            <select id="language" name="language" style="text-align:center;">
+              <option value="">Language</option>
+              <option value="&language=en">English</option>
+              <option value="&language=zh">中文</option>
+            </select>
+            <select id="Date" name="Date" style="text-align:center;">
+              <option value= 0>Date</option>
+              <option value="1">Today</option>
+              <option value="2">This week</option>
+              <option value="3">This month</option>
+            </select>
+            <select id="sort" name="sort" style="text-align:center;">
+              <option value="">Sort by</option>
+              <option value="&sortBy=relevancy">relevancy</option>
+              <option value="&sortBy=popularity">popularity</option>
+              <option value="&sortBy=publishedAt">newest</option>
+            </select>
+            &emsp;
+            <input id="search" type="search" name="search" class="search-input" style="text-align:center;" placeholder="Search for news" required>
+            <button class="search__button" style="text-align:center;"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+

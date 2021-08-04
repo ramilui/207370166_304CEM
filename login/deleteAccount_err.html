@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Delete account</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="login/src/main.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="/DeleteAC" method="POST" id="login">
+            <h1 class="form__title">Delete your account</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" name="username" class="form__input" autofocus placeholder="Username" required>
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password"  name="password" class="form__input" autofocus placeholder="password" required>
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="text"  name="confirm" class="form__input" autofocus placeholder="type DELETE here to confirm" required>
+                <div class="form__input-error-message"></div>
+            </div>
+            <p class="form__message--error">Invalid username/password combination or DELETE was not correctly typed
+            </p>
+            <button class="form__button" type="submit">Submit</button>
+            <p class="form__text">
+                <a href="/" class="form__link">Back to login Page</a>
+            </p>
+        </form>
+    <script src="login/src/main.js"></script>
+</body>
