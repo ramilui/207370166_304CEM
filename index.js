@@ -332,6 +332,7 @@ app.post('/changePassword', function(request, response) {
 					if (error) throw err;
 					console.log(username_changePW +' s password is updated');//console.log
 					response.redirect('/changed')
+					console.log("redirected to login page")
 					username_changePW = null;
 					password_current = null;
 					password_new = null;
@@ -345,6 +346,11 @@ app.post('/changePassword', function(request, response) {
 			} else {
 			response.redirect('/changePW_errB');
 			console.log("username/password is invalid")
+			username_changePW = null;
+			password_current = null;
+			password_new = null;
+			password_confirm = null
+			// clear session
 			}
 		});
 		}
@@ -352,6 +358,11 @@ app.post('/changePassword', function(request, response) {
 	} else {
 	response.redirect('/changePW');
 	console.log('username/password is not defined');
+	username_changePW = null;
+	password_current = null;
+	password_new = null;
+	password_confirm = null
+	// clear session
 	}
 });
 
